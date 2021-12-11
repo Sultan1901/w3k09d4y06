@@ -11,5 +11,14 @@ const user = new mongoose.Schema({
     default: "61a73d1090052e6ddab5f09a",
     ref: "Role",
   },
+  status: {
+      type: String, 
+      enum: ['Pending', 'Active'],
+      default: 'Pending'
+    },
+    confirmationCode: { 
+      type: String, 
+      unique: true }
+    
 });
 module.exports = mongoose.model("User", user);

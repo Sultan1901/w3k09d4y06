@@ -33,7 +33,9 @@ const login = (req, res) => {
   userModel
     .findOne({ $or:[{email},{username}]})
     .then(async (result) => {
+      
       if (result) {
+            
         if ((
           email === result.email ||
           username === result.usernameh
@@ -43,12 +45,13 @@ const login = (req, res) => {
             role: result.role,
             id: result._id,
           };
+          
 
           const crackedhashpwd = await bcrypt.compare(
             password,
             result.password
           );
-
+          
           if (crackedhashpwd) {
             const options = {
               expiresIn: "3600m",
@@ -65,6 +68,8 @@ const login = (req, res) => {
       } else {
         res.status(400).json("email does not ===> match our records");
       }
+     
+      
     })
     .catch((err) => {
       res.status(400).json(err);
