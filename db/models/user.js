@@ -16,7 +16,8 @@ const user = new mongoose.Schema({
     enum: ["Pending", "Active"],
     default: "Pending",
   },
-  
-  activeCode: { type: String }
+
+  activeCode: { type: String },
+  passwordCode:{type:String}
 });
 module.exports = mongoose.model("User", user);

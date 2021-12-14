@@ -28,7 +28,9 @@ const addPost = (req, res) => {
  */
 const getPost = (req, res) => {
   postModel
-    .find({ userId: req.token.id})
+    .find({ userId: req.token.id })
+    .populate("commentId", "description -_id")
+
     .then((result) => {
       res.status(200).json(result);
     })
@@ -57,7 +59,7 @@ const deletePost = (req, res) => {
   const { id } = req.params;
 
   postModel
-    .findByIdAndUpdate(id, { $set: { isDel: true } })
+    .findByIdAndRemove(id)
     .exec()
     .then((result) => {
       res.status(200).json("Deleted");
