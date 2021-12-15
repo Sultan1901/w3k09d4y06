@@ -20,7 +20,7 @@ userRouter.post("/login", login);
 userRouter.delete("/deleteUser/:id", authentication, authorization, deleteUser);
 userRouter.put("/updateUser/:id", authentication, authorization, updateUser);
 userRouter.post("/active", verifyAccount);
-userRouter.post("/check", checkEmail);
+userRouter.post("/check/", checkEmail);
 userRouter.post("/reset", resetPassword);
 
 
