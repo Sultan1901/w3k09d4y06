@@ -8,4 +8,4 @@
 ## => UML
 ![UML](./finaluml.png)
 ## ERD
-![ER Diagram](./erd.png)
+![ERD](./ERD.png)
